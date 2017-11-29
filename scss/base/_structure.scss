@@ -1,0 +1,115 @@
+
+/******************************************************************************
+    STRUCTURE
+******************************************************************************/
+
+
+
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+
+
+
+/******************************************************************************
+    PHONE VIEWPORT max 1199x
+******************************************************************************/
+
+@media (max-width: 1199px) {
+
+    .site {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+    }
+    
+    .site-header {
+        height: 70px;
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .site-menu {
+        height: 70px;
+        grid-column: 1 / -1;
+    }
+
+    .site-main {
+        grid-column: 1 / -1;
+    }
+
+    .sidebar-form {
+        display: none;
+        grid-column: 1 / -1;
+    }
+
+}
+
+/******************************************************************************
+    TABLET LANDSCAPE VIEWPORT  min 900px
+******************************************************************************/
+
+@media (min-width: 1200px)  {
+    
+    .site {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: auto;
+    }
+
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        grid-column: 1 / 2;
+        width: auto;
+        height: 100vh;   
+        overflow: hidden; 
+    }
+
+
+    .site-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        grid-column: 2 / 4;
+        width: auto;
+        height: 100vh;
+        overflow:hidden;
+    }
+
+    .site-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        grid-column: 4 / 8;
+        width: auto;
+        height: 100vh;
+        overflow: auto;
+    }
+
+    .sidebar-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        grid-column: 8 / 13;
+        width: auto;
+        height: 100vh;
+        overflow:hidden;
+    }
+}
