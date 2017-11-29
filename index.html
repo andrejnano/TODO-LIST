@@ -8,53 +8,73 @@
     <script defer src="js/packs/brands.js"></script>
     <script defer src="js/fontawesome.min.js"></script>
 
+    <!-- js script s ktorym sa pracuje -->
     <script src="js/main.js"></script>
+
 </head>
 <body>
 
+    <!-- main page container -->
     <div class='site' id='site'>
 
+        <!-- header container | logo , page menu , links.. --> 
         <header class='site-header'>
 
+            <!-- logo -->
             <h2 class='app-name'>TODO LIST</h2>
 
+            <!-- login container -->
             <div class='login-area'>
                 <a href='#'>
                     <i class='fa fa-fw fa-user'></i> username
                 </a>
+
                 <br/>
+
                 <a href='#'>Profile</a> | <a href='#'>Logout </a>
             </div>
 
+
+            <!-- links container --> 
             <div class='link-area'>
+
+                <!-- archive -->
                 <a href='#' class='action-link'>
                     <i class='fa fa-fw fa-history'></i>
                 </a>
+
+                <!-- trash -->
                 <a href='#' class='action-link'>
                     <i class='fa fa-fw fa-trash-alt'></i>
                 </a>
+
+                <!-- settings -->
                 <a href='#' class='action-link'>
                     <i class='fa fa-fw fa-cogs'></i>
                 </a>
+
+                <!-- help -->
                 <a href='#' class='action-link'>
                     <i class='fa fa-fw fa-question-circle'></i>
                 </a>
 
+                <!-- github link -->
                 <a href='#' class='github-link'>
                     our repository
                     <i class='fab fa-fw fa-github'></i>
                 </a>
+
             </div>
-            
 
+        </header> 
 
-
-
-        </header>
-
+        <!-- SUBJECT MENU CONTAINER -->
         <nav class='site-menu'>
 
+            <!-- SUBJECT MENU LIST -->
             <ul class='menu'>
+
+                <!-- LIST ITEM -->
                 <li class='category' id='white'>
                     ALL
                 </li>
@@ -80,18 +100,26 @@
                 </li>
 
             </ul>
+
         </nav>
 
+
+        <!-- CURRENT LIST DISPLAY CONTAINER -->
         <main class='site-main'>
-            
 
-            <ul class='current-list' style="display: none">
+            <!-- CURRENT LIST TO SHOW --> 
+            <ul class='current-list' >
 
+
+                <!-- LIST ITEM STATIC STRUCTURE --> 
                 <li class='list-item' id='border-green'>
+                    <!-- Item title -->
                     <header class='item-header'>Item name</header>
+                    <!-- Item description -->
                     <div class='item-info'>
                         Excerpt from item description.
                     </div>
+                    <!-- Item check button, start the check() js function.. for the current item -->
                     <button class='item-button' onclick="check">
                         <i class="fa fa-fw fa-check"></i>
                     </button>
@@ -138,105 +166,28 @@
                     </button>
                 </li>
 
+            </ul> <!-- end of .current-list -->
 
-                <li class='list-item' id='border-pink'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
+        </main> <!-- end of .site-main -->
 
 
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-                
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-                
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                        
-                    </button>
-                </li>
-
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-                
-                <li class='list-item'>
-                    <header class='item-header'>Item name</header>
-                    <div class='item-info'>
-                        Excerpt from item description.
-                    </div>
-                    <button class='item-button' onclick="check">
-                        <i class="fa fa-fw fa-check"></i>
-                    </button>
-                </li>
-
-            </ul>
-        </main>
-
+        <!-- INPUT FORM CONTAINER -->
         <aside class='sidebar-form'>
 
+            <!-- temporary input form -->
             <form class='input-form'>
                 
+                <!-- ORDERED LIST OF STEPS TO INPUT -->
                 <ol>
+                    <!-- SUBJECT SELECTION -->
                     <li>
                         <label class='input-title'>
                             Choose a subject.
                         </label>
 
-                        <table>
-                            <tr>
-                                <td id='green'>IFJ</td>
+                        <table> <!-- table -->
+                            <tr> <!-- table row -->
+                                <td id='green'>IFJ</td> <!-- table cell -->
                                 <td id='blue'>IAL</td>
                                 <td id='red'>ITU</td>
                                 <td id='yellow'>INM</td>
@@ -247,37 +198,39 @@
                                 <td id='green'>IZP</td>
                                 <td id='blue'>ISU</td>
                             </tr>
-
                         </table>
 
                     </li>
-            
+
+                    <!-- TITLE INPUT -->
                     <li>
                         <label class='input-title'>
                             Name the activity you want to do.
                         </label>
                         
-                        <input type='text' name='title' />
+                        <input type='text' name='title' />  <!-- short input box -->
                     </li>
 
+                    <!-- DESCRIPTION INPUT -->
                     <li>
                         <label class='input-title'>
                             Give further information about the task...
                         </label>
 
-                        <textarea></textarea>
+                        <textarea></textarea> <!-- big input box -->
 
-                        <button type='submit' class='submit'>
+                        <button type='submit' class='submit'> <!-- SUBMIT BUTTON -->
                             Add new task
                         </button>
                     </li>
-                </ol>
+
+                </ol> <!-- end of order list -->
             
-            </form>
+            </form> <!-- end of form -->
 
-        </aside>
+        </aside> <!-- end of .input form CONTAINER -->
 
-    </div>
+    </div> <!-- end of main page container -->
 
 </body>
 </html>
