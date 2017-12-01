@@ -101,7 +101,7 @@
         <main class='site-main'>
 
             <!-- CURRENT LIST TO SHOW --> 
-            <ul class='current-list' >
+            <ul id="subject_list" class='current-list' >
 
 
                 <!-- LIST ITEM STATIC STRUCTURE --> 
@@ -179,17 +179,17 @@
                         </label>
 
                         <table> <!-- table -->
-                            <tr class='f'> <!-- table row -->
-                                <td id='input-form-ifj' bgcolor="#4caf50" onclick="highlight('input-form-ifj');" style="cursor: pointer;">IFJ</td>
-                                <td id='input-form-ial' bgcolor='#3f51b5' onclick="highlight('input-form-ial');" style="cursor: pointer;">IAL</td>
-								<td id='input-form-itu' bgcolor='#f44336' onclick="highlight('input-form-itu');" style="cursor: pointer;">ITU</td>
-                                <td id='input-form-inm' bgcolor='#ffa726' onclick="highlight('input-form-inm');" style="cursor: pointer;">INM</td>
+                            <tr> <!-- table row -->
+                                <td id='input-form-ifj' bgcolor="#4caf50" onclick="choose_subject_to_add('input-form-ifj');" style="cursor: pointer;">IFJ</td>
+                                <td id='input-form-ial' bgcolor='#3f51b5' onclick="choose_subject_to_add('input-form-ial');" style="cursor: pointer;">IAL</td>
+								<td id='input-form-itu' bgcolor='#f44336' onclick="choose_subject_to_add('input-form-itu');" style="cursor: pointer;">ITU</td>
+                                <td id='input-form-inm' bgcolor='#ffa726' onclick="choose_subject_to_add('input-form-inm');" style="cursor: pointer;">INM</td>
                             </tr>
                             <tr>
-								<td id='input-form-inp' bgcolor='#3f51b5' onclick="highlight('input-form-inp');" style="cursor: pointer;">INP</td>
-								<td id='input-form-ips' bgcolor='#9c27b0' onclick="highlight('input-form-ips');" style="cursor: pointer;">IPS</td>
-                                <td id='input-form-izp' bgcolor="#4caf50" onclick="highlight('input-form-izp');" style="cursor: pointer;">IZP</td>
-                                <td id='input-form-isu' bgcolor='#3f51b5' onclick="highlight('input-form-isu');" style="cursor: pointer;">ISU</td>
+								<td id='input-form-inp' bgcolor='#3f51b5' onclick="choose_subject_to_add('input-form-inp');" style="cursor: pointer;">INP</td>
+								<td id='input-form-ips' bgcolor='#9c27b0' onclick="choose_subject_to_add('input-form-ips');" style="cursor: pointer;">IPS</td>
+                                <td id='input-form-izp' bgcolor="#4caf50" onclick="choose_subject_to_add('input-form-izp');" style="cursor: pointer;">IZP</td>
+                                <td id='input-form-isu' bgcolor='#3f51b5' onclick="choose_subject_to_add('input-form-isu');" style="cursor: pointer;">ISU</td>
                             </tr>
                         </table>
 
@@ -201,7 +201,7 @@
                             Name the activity you want to do.
                         </label>
                         
-                        <input type='text' name='title' />  <!-- short input box -->
+                        <input type='text' name='title' id="activity_info" onchange="set_activity_info();"/>  <!-- short input box -->
                     </li>
 
                     <!-- DESCRIPTION INPUT -->
@@ -210,9 +210,9 @@
                             Give further information about the task...
                         </label>
 
-                        <textarea></textarea> <!-- big input box -->
+                        <textarea id="further_info" onchange="set_further_info();"></textarea> <!-- big input box -->
 
-                        <button type='submit' class='submit'> <!-- SUBMIT BUTTON -->
+                        <button type='button' class="submit" onclick="add_new_task();"> <!-- SUBMIT BUTTON -->
                             Add new task
                         </button>
                     </li>
