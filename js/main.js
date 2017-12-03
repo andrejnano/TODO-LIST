@@ -334,6 +334,12 @@ function add_new_task()
 /* This function is called whenever we want filter tasks by subjects.*/
 $('#subjects_filtering .category').on('click', function() {
 
+	$(".category").each( function() {
+		$(this).removeClass("selected");
+	});
+
+	$(this).addClass("selected");
+	
 	var name = (JSON.stringify(this.textContent));
 	var parent =document.getElementById("subject_list");
   
