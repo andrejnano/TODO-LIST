@@ -177,9 +177,18 @@ function addItemHTML(name, color, activity, archived)
 	li.appendChild(button);
 		
 	var i = document.createElement("i");
-	i.setAttribute('class', "fa fa-fw fa-check");
-	// <i class="fa fa-fw fa-check"></i>
-	(archived)? button.addEventListener('click',itemFromArchiveDelete): button.addEventListener('click',itemToArchive)
+	
+	if (archived)
+	{
+		i.setAttribute('class', "fa fa-fw fa-arrow-alt-circle-up");
+		button.addEventListener('click', itemFromArchiveDelete);
+	}
+	else
+	{
+		i.setAttribute('class', "fa fa-fw fa-check");
+		button.addEventListener('click', itemToArchive);
+	}
+
 	button.appendChild(i);	
 	
 }
