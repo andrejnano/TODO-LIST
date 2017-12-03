@@ -41,9 +41,10 @@ function renderTodoList(filter)
 		var name=temp.name;
 		var color=temp.color;
 		var activity=temp.activity;
+		var info=temp.info;
 
 		if((filter==null) || (filter===JSON.stringify(name)))
-			addItemHTML(name, color, activity);
+			addItemHTML(name, color, activity, info);
 	}
 }
 
@@ -60,8 +61,9 @@ function renderArchiveList()
 		var name=temp.name;
 		var color=temp.color;
 		var activity=temp.activity;
-
-		addItemHTML(name, color, activity, 1);
+		var info=temp.info;
+		
+		addItemHTML(name, color, activity, info, 1);
 
 	}
 }
@@ -101,7 +103,8 @@ function dataObjectUptated()
 }
 
 /* Function for converting record of RGB color to HEX record of color.*/
-function rgb2hex(rgb) {
+function rgb2hex(rgb) 
+{
     rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     function hex(x) {
         return ("0" + parseInt(x).toString(16)).slice(-2);
@@ -118,7 +121,19 @@ function itemToArchive()
 	var name = item.children[0].textContent;
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
-	var temp = {'name': name,'color': color,'activity': activity};
+	
+	if( $(item.children[2]).css("visibility") == "hidden")
+	{
+		$(item).find(".extra-info").css("visibility","visible");
+		var info=item.children[2].textContent;
+		$(item).find(".extra-info").css("visibility","hidden");
+	}
+	else
+	{
+		var info=item.children[2].textContent;
+	}
+		
+	var temp = {'name': name,'color': color,'activity': activity, 'info': info};
 
 	data.todo.splice(data.todo.indexOf(JSON.stringify(temp)),1);
 	data.archived.push(JSON.stringify(temp));
@@ -138,7 +153,18 @@ function itemFromArchiveDelete()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	var temp = {'name': name,'color': color,'activity': activity};
+	if( $(item.children[2]).css("visibility") == "hidden")
+	{
+		$(item).find(".extra-info").css("visibility","visible");
+		var info=item.children[2].textContent;
+		$(item).find(".extra-info").css("visibility","hidden");
+	}
+	else
+	{
+		var info=item.children[2].textContent;
+	}
+	
+	var temp = {'name': name,'color': color,'activity': activity, 'info': info};
 	data.archived.splice(data.archived.indexOf(JSON.stringify(temp)),1);
 	dataObjectUptated();
 	console.log(data);
@@ -146,9 +172,37 @@ function itemFromArchiveDelete()
 	parent.removeChild(item);
 }
 
+function fromArchiveToTODO()
+{
+	var item = this.parentNode;
+	var parent = item.parentNode;	
+	
+	var name = item.children[0].textContent;
+	var color = rgb2hex($(item).css("border-left-color"));
+	var activity= item.children[1].textContent;
+	
+	if( $(item.children[2]).css("visibility") == "hidden")
+	{
+		$(item).find(".extra-info").css("visibility","visible");
+		var info=item.children[2].textContent;
+		$(item).find(".extra-info").css("visibility","hidden");
+	}
+	else
+	{
+		var info=item.children[2].textContent;
+	}
+	var temp = {'name': name,'color': color,'activity': activity, 'info': info};
+	data.archived.splice(data.archived.indexOf(JSON.stringify(temp)),1);
+	data.todo.push(JSON.stringify(temp));
+	dataObjectUptated();
+	console.log(data);
+	parent.removeChild(item);
+	
+}
+
 /* Function for adding HTML code of tasks. If we us extra parameter archived then we are generating code for archive task,
  *  which is little bit different then todo task.*/
-function addItemHTML(name, color, activity, archived)
+function addItemHTML(name, color, activity, info, archived)
 {
 	/* Get subject list element */
 	var ul = document.getElementById("subject_list");
@@ -164,13 +218,20 @@ function addItemHTML(name, color, activity, archived)
 	header.setAttribute('class','item-header');
 	header.appendChild(document.createTextNode(name));
 	li.appendChild(header);
-		
+			
 	/* Set subject activity text */
 	var div = document.createElement("div");
 	div.setAttribute('class','item-info');
 	div.appendChild(document.createTextNode(activity));
 	li.appendChild(div);
 		
+	/* Set subject extra info text */
+	var div2 = document.createElement("div");
+	div2.setAttribute('class','extra-info');
+	div2.style.visibility = "hidden";
+	div2.appendChild(document.createTextNode(info));
+	li.appendChild(div2);
+	
 	/* Create the 'Task complete' button */
 	var button = document.createElement("button");
 	button.setAttribute('class','item-button');
@@ -181,7 +242,7 @@ function addItemHTML(name, color, activity, archived)
 	if (archived)
 	{
 		i.setAttribute('class', "fa fa-fw fa-arrow-alt-circle-up");
-		button.addEventListener('click', itemFromArchiveDelete);
+		button.addEventListener('click', fromArchiveToTODO);
 	}
 	else
 	{
@@ -189,6 +250,25 @@ function addItemHTML(name, color, activity, archived)
 		button.addEventListener('click', itemToArchive);
 	}
 
+	
+	if (archived)
+	{
+		var remove_btn = document.createElement("button");
+		remove_btn.setAttribute('class','remove-button');
+		li.appendChild(remove_btn);
+		//var j = document.createElement("i");
+		//j.setAttribute('class', "fa fa-fw fa-times");
+		
+		/*tieto 2 riadky odstran*/
+		remove_btn.setAttribute('content', 'test content');
+		remove_btn.innerHTML = 'X';
+		
+		remove_btn.addEventListener('click', itemFromArchiveDelete);
+		remove_btn.style.visibility = "hidden";
+		//remove_btn.appendChild(j);
+	}
+	
+	
 	button.appendChild(i);	
 	
 }
@@ -202,14 +282,14 @@ function add_new_task()
 	{
 		display_all_todo_tasks();
 		
-		addItemHTML(subject_name, subject_color, subject_activity);
+		addItemHTML(subject_name, subject_color, subject_activity, subject_info);
 		
 		subject_object.style["-webkit-filter"] = "brightness(100%)";
 		document.getElementById("activity_info").value='';
 		document.getElementById("further_info").value='';
 
 		//data.todo.push({'name': subject_name,'color': subject_color,'activity': subject_activity , 'info': subject_info});
-		var temp={'name': subject_name,'color': subject_color,'activity': subject_activity};
+		var temp={'name': subject_name,'color': subject_color,'activity': subject_activity, 'info': subject_info};
 		data.todo.push(JSON.stringify(temp));
 		dataObjectUptated();
 		console.log(data);
@@ -259,9 +339,19 @@ function display_all_todo_tasks()
 
 /* Function called whenever we click on task*/
 $('#subject_list').on('click', '.list-item', function() {
-	console.log(this.parentNode);
 	
-	 //$(this.parentNode).css( "grid-template-columns", "1fr" );
-	   // grid-template-columns: 1fr 1fr;
-	$(this).css( "grid-column-end", "span 2" );
+	if( $(this).css("grid-column-end") == "span 2")
+	{
+		$(this).css( "grid-column-end", "span 1" );
+		$(this).find(".extra-info").css("visibility","hidden");
+		
+		if($(this).find(".remove-button").css("visibility") == "visible")
+			$(this).find(".remove-button").css("visibility","hidden");
+		
+	}else
+	{
+		$(this).css( "grid-column-end", "span 2" );
+		$(this).find(".extra-info").css("visibility","visible");
+		$(this).find(".remove-button").css("visibility","visible");
+	}
 });
