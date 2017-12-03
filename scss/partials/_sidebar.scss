@@ -152,6 +152,114 @@
                         font-weight: bold;
                         font-size: 2rem;
                         border-bottom: 1px solid #fff;
+                        margin: 4rem 2rem 2rem;
+                    }
+
+                    table {
+                        width: 100%;
+                        border-collapse: separate;
+                        border-spacing: 1rem;
+
+                        tr {
+                            
+                            td {
+                                height: 2rem;
+                                width: 2rem;
+                                font-size: 2rem;
+                                line-height: 4rem;
+                                font-weight: bold;
+                                text-align: center;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+
+                    input {
+                        width: 90%;
+                        height: 3rem;
+                        font-size: 2rem;
+                        line-height: 2rem;
+                        font-weight: bold;
+                        border-radius: 5px;
+                        border: none;
+                        outline: none;
+                        background: rgba(0,0,0,0.5);
+                        padding: 0.5rem;
+                        color: #fff;
+                    }
+
+                    textarea {
+                        width: 90%;
+                        font-size: 1.6rem;
+                        height: 10rem;
+                        text-align: left;
+                        border-radius: 5px;
+                        border: none;
+                        outline: none;
+                        background: rgba(0,0,0,0.5);
+                        padding: 0.5rem;
+                        color: #fff;
+                    }
+                    
+                    .submit {
+                        border: none;
+                        text-decoration: none;
+                        display: inline-block;
+                        position: absolute;
+                        bottom: 1.6rem;
+                        right: 1rem;
+                        font-size: 1.4rem;
+                        font-weight: bold;
+                        background: #e43a15; /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #e43a15, #e65245); /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #e43a15, #e65245); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                        border-radius: 50%;
+                        border: none;
+                        width: 60px;
+                        height: 60px;
+                        color: #fff;
+                        cursor: pointer;
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+                        &:hover {
+                            opacity: 0.8;
+                            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+    }
+}
+
+
+@include for-big-desktop-up {
+
+    .sidebar-form {
+        justify-content: center;
+
+        .input-form {
+            display: inline-block;
+            margin: 0 auto;
+            text-align: left;
+            
+            ol {
+                list-style-type:decimal;
+                font-size: 1.6rem;
+
+                li {
+                    text-align: center;
+
+                    .input-title {
+                        text-align: left;
+                        display: block;
+                        font-weight: bold;
+                        font-size: 2rem;
+                        border-bottom: 1px solid #fff;
                         margin: 4rem 0 2rem 0;
                     }
 
@@ -205,18 +313,26 @@
                         border: none;
                         text-decoration: none;
                         display: inline-block;
-                        margin: 2rem 0;
-                        padding: 1rem 2rem;
-                        font-size: 2rem;
+                        position: absolute;
+                        bottom: 3.2rem;
+                        right: 2rem;
+                        font-size: 1.4rem;
                         font-weight: bold;
-                        border-radius: 5px;
-                        background: $blue;
+                        background: #e43a15; /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #e43a15, #e65245); /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #e43a15, #e65245); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                        border-radius: 50%;
+                        border: none;
+                        width: 70px;
+                        height: 70px;
                         color: #fff;
                         cursor: pointer;
-                        box-shadow: 1px -1px 3px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
-                    }
-                    .submit:hover {
-                        opacity: 0.8;
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+                        &:hover {
+                            opacity: 0.8;
+                            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                        }
                     }
 
                 }

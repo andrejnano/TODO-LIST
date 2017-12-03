@@ -243,6 +243,7 @@ function addItemHTML(name, color, activity, info, archived)
 	{
 		i.setAttribute('class', "fa fa-fw fa-arrow-alt-circle-up");
 		button.addEventListener('click', fromArchiveToTODO);
+		li.setAttribute('class', 'list-item archived');
 	}
 	else
 	{
@@ -377,10 +378,8 @@ function logout()
 	login_button.appendChild(login_text);   
 	
 	/* Logout text */
-	var logout_text = document.createElement("center");
-	logout_text.style.position = 'absolute';
-	logout_text.style.top= '50%';
-	logout_text.style.left= '40%';
+	var logout_text = document.createElement("div");
+	logout_text.setAttribute('class', 'logout');
 	logout_text.innerHTML = "You have been successfully logged out"
 	
 	/* Make a new line */
