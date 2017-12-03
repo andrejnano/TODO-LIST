@@ -143,8 +143,8 @@ function itemToArchive()
 	parent.removeChild(item);
 }
 
-/* Function for deleting task from archive. We need also to undisplay it from screen.*/
-function itemFromArchiveDelete()
+/* Function for deleting task. We need also to undisplay it from screen.*/
+function itemDelete()
 {
 	var item = this.parentNode;
 	var parent = item.parentNode;	
@@ -166,6 +166,8 @@ function itemFromArchiveDelete()
 	
 	var temp = {'name': name,'color': color,'activity': activity, 'info': info};
 	data.archived.splice(data.archived.indexOf(JSON.stringify(temp)),1);
+	data.todo.splice(data.todo.indexOf(JSON.stringify(temp)),1);
+
 	dataObjectUptated();
 	console.log(data);
 	
@@ -254,22 +256,19 @@ function addItemHTML(name, color, activity, info, archived)
 	}
 
 	
-	if (archived)
-	{
-		var remove_btn = document.createElement("button");
-		remove_btn.setAttribute('class','remove-button');
 
-		var j = document.createElement("i");
-		j.setAttribute('class', "fa fa-fw fa-times-circle");
+	var remove_btn = document.createElement("button");
+	remove_btn.setAttribute('class','remove-button');
 
-		remove_btn.appendChild(j);
-		li.appendChild(remove_btn);
+	var j = document.createElement("i");
+	j.setAttribute('class', "fa fa-fw fa-times-circle");
+
+	remove_btn.appendChild(j);
+	li.appendChild(remove_btn);
 		
-		remove_btn.addEventListener('click', itemFromArchiveDelete);
-		remove_btn.style.visibility = "hidden";
-	}
-	
-	
+	remove_btn.addEventListener('click', itemDelete);
+	remove_btn.style.visibility = "hidden";
+
 	button.appendChild(i);	
 	
 }
