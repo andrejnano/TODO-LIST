@@ -140,6 +140,9 @@ function itemToArchive()
 	dataObjectUptated();
 	console.log(data);
 	
+	$('.popup span').text('Task send to archive');
+	$('.popup span').show().delay(2000).fadeOut();
+	
 	parent.removeChild(item);
 }
 
@@ -171,6 +174,9 @@ function itemDelete()
 	dataObjectUptated();
 	console.log(data);
 	
+	$('.popup span').text('Task deleted');
+	$('.popup span').show().delay(2000).fadeOut();
+	
 	parent.removeChild(item);
 }
 
@@ -200,6 +206,10 @@ function fromArchiveToTODO()
 	data.todo.push(JSON.stringify(temp));
 	dataObjectUptated();
 	console.log(data);
+	
+	$('.popup span').text('Task send to TODO list');
+	$('.popup span').show().delay(2000).fadeOut();
+	
 	parent.removeChild(item);
 	
 }
@@ -278,6 +288,17 @@ function addItemHTML(name, color, activity, info, archived)
  * values are reseted after clicking on button.*/
 function add_new_task()
 {
+	$('#subject_label').css("color", 'white');
+	$('#activity_label').css("color", 'white');
+	$('#info_label').css("color", 'white');
+	
+	if(!subject_name)
+		$('#subject_label').css("color", 'red');
+	if(!subject_activity)
+		$('#activity_label').css("color", 'red');
+	if(!subject_info)
+		$('#info_label').css("color", 'red');
+	
 	/* All three variables are not empty */
 	if (subject_object && subject_name && subject_color && subject_activity && subject_info)
 	{
@@ -294,6 +315,9 @@ function add_new_task()
 		dataObjectUptated();
 		console.log(data);
 		
+		$('.popup span').text('New task added');
+		$('.popup span').show().delay(2000).fadeOut();
+		
 		subject_object=null;
 		subject_name=null;
 		subject_color=null;
@@ -303,7 +327,8 @@ function add_new_task()
 	
 	else
 	{
-		alert("Something's missing");
+		$('.popup span').text('Something is missing.');
+		$('.popup span').show().delay(2000).fadeOut();
 	}
 }
 
