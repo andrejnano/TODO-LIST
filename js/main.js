@@ -10,7 +10,7 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 	archived:[]
 };
 
-/* Function for clearing localStorage data. In everything works, it's commented.*/
+/* Function for clearing localStorage data. If everything works, it's commented.*/
 //localStorage.clear();
 
 console.log(data);
@@ -180,6 +180,7 @@ function itemDelete()
 	parent.removeChild(item);
 }
 
+/* Function for sending archived task back to todo list tasks.*/
 function fromArchiveToTODO()
 {
 	var item = this.parentNode;
@@ -253,6 +254,7 @@ function addItemHTML(name, color, activity, info, archived)
 		
 	var i = document.createElement("i");
 	
+	/* If it is archived tasks that we are rendering, then it will have different class and different button.*/
 	if (archived)
 	{
 		i.setAttribute('class', "fa fa-fw fa-arrow-alt-circle-up");
@@ -265,22 +267,18 @@ function addItemHTML(name, color, activity, info, archived)
 		button.addEventListener('click', itemToArchive);
 	}
 
-	
+	button.appendChild(i);	
 
+	/* Creating remove button, which is hidden by default.*/
 	var remove_btn = document.createElement("button");
 	remove_btn.setAttribute('class','remove-button');
-
 	var j = document.createElement("i");
 	j.setAttribute('class', "fa fa-fw fa-times-circle");
-
 	remove_btn.appendChild(j);
 	li.appendChild(remove_btn);
-		
-
 	remove_btn.addEventListener('click', itemDelete);
 	remove_btn.style.display = "none";
 
-	button.appendChild(i);	
 	
 }
 
@@ -315,6 +313,7 @@ function add_new_task()
 		dataObjectUptated();
 		console.log(data);
 		
+		/*This two lines of code are used to display prompts on screen.*/
 		$('.popup span').text('New task added');
 		$('.popup').show().delay(2000).fadeOut();
 		
@@ -355,7 +354,7 @@ $('#archive').click(function() {
 	renderArchiveList();
 });
 
-
+/* Function for displaying all todo tasks.*/
 function display_all_todo_tasks()
 {
 	$('#subject_list li').remove();
@@ -363,7 +362,7 @@ function display_all_todo_tasks()
 	renderTodoList();
 }
 
-/* Function called whenever we click on task*/
+/* Function called whenever we click on task. Cell of tasks will be larger and there will be displayed extra info a remove button.*/
 $('#subject_list').on('click', '.list-item', function() {
 	
 	if( $(this).css("grid-column-end") == "span 2")
@@ -439,7 +438,7 @@ function hide_form() {
 	form.setAttribute('class', 'sidebar-form');
 }
 
-
+/* Displaying all todo tasks, when someone has clicked on button todo-list*/
 $('#todo-list').click(function() {
 	
 	hide_form();
