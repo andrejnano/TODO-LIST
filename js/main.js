@@ -258,17 +258,15 @@ function addItemHTML(name, color, activity, info, archived)
 	{
 		var remove_btn = document.createElement("button");
 		remove_btn.setAttribute('class','remove-button');
+
+		var j = document.createElement("i");
+		j.setAttribute('class', "fa fa-fw fa-times-circle");
+
+		remove_btn.appendChild(j);
 		li.appendChild(remove_btn);
-		//var j = document.createElement("i");
-		//j.setAttribute('class', "fa fa-fw fa-times");
-		
-		/*tieto 2 riadky odstran*/
-		remove_btn.setAttribute('content', 'test content');
-		remove_btn.innerHTML = 'X';
 		
 		remove_btn.addEventListener('click', itemFromArchiveDelete);
 		remove_btn.style.visibility = "hidden";
-		//remove_btn.appendChild(j);
 	}
 	
 	
