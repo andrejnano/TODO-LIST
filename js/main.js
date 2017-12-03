@@ -80,7 +80,7 @@ function choose_subject_to_add(object_id)
 	/* Then highlight the selected input form cell */
 	var object = document.getElementById(object_id)
 	object.style["-webkit-filter"] = "brightness(150%)";
-	
+
 	subject_object = object;
 	subject_name=subject_object.textContent;
 	subject_color=subject_object.getAttribute('bgcolor');
