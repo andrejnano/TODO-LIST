@@ -191,6 +191,8 @@ function add_new_task()
 	/* All three variables are not empty */
 	if (subject_object && subject_name && subject_color && subject_activity && subject_info)
 	{
+		display_all_todo_tasks();
+		
 		addItemHTML(subject_name, subject_color, subject_activity);
 		
 		subject_object.style["-webkit-filter"] = "brightness(100%)";
@@ -217,10 +219,8 @@ function add_new_task()
 }
 
 /* This function is called whenever we want filter tasks by subjects.*/
-$('#subjects_filtering .category').on('click', function(e) {
-	if (e.target !== this)
-		return;
-  
+$('#subjects_filtering .category').on('click', function() {
+
 	var name = (JSON.stringify(this.textContent));
 	var parent =document.getElementById("subject_list");
   
@@ -239,4 +239,20 @@ $('#archive').click(function() {
 	$('#subject_list li').remove();
   
 	renderArchiveList();
+});
+
+function display_all_todo_tasks()
+{
+	$('#subject_list li').remove();
+	
+	renderTodoList();
+}
+
+/* Function called whenever we click on task*/
+$('#subject_list').on('click', '.list-item', function() {
+	console.log(this.parentNode);
+	
+	 //$(this.parentNode).css( "grid-template-columns", "1fr" );
+	   // grid-template-columns: 1fr 1fr;
+	$(this).css( "grid-column-end", "span 2" );
 });
