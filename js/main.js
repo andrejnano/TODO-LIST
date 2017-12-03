@@ -122,11 +122,11 @@ function itemToArchive()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -153,11 +153,11 @@ function itemDelete()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -185,11 +185,11 @@ function fromArchiveToTODO()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -232,7 +232,7 @@ function addItemHTML(name, color, activity, info, archived)
 	/* Set subject extra info text */
 	var div2 = document.createElement("div");
 	div2.setAttribute('class','extra-info');
-	div2.style.visibility = "hidden";
+	div2.style.display = "none";
 	div2.appendChild(document.createTextNode(info));
 	li.appendChild(div2);
 	
@@ -266,8 +266,16 @@ function addItemHTML(name, color, activity, info, archived)
 	remove_btn.appendChild(j);
 	li.appendChild(remove_btn);
 		
+
 	remove_btn.addEventListener('click', itemDelete);
 	remove_btn.style.visibility = "hidden";
+
+
+	remove_btn.addEventListener('click', itemFromArchiveDelete);
+	remove_btn.style.display = "none";
+	}
+	
+	
 
 	button.appendChild(i);	
 	
@@ -288,7 +296,6 @@ function add_new_task()
 		document.getElementById("activity_info").value='';
 		document.getElementById("further_info").value='';
 
-		//data.todo.push({'name': subject_name,'color': subject_color,'activity': subject_activity , 'info': subject_info});
 		var temp={'name': subject_name,'color': subject_color,'activity': subject_activity, 'info': subject_info};
 		data.todo.push(JSON.stringify(temp));
 		dataObjectUptated();
@@ -344,16 +351,16 @@ $('#subject_list').on('click', '.list-item', function() {
 	if( $(this).css("grid-column-end") == "span 2")
 	{
 		$(this).css( "grid-column-end", "span 1" );
-		$(this).find(".extra-info").css("visibility","hidden");
+		$(this).find(".extra-info").css("display","none");
 		
-		if($(this).find(".remove-button").css("visibility") == "visible")
-			$(this).find(".remove-button").css("visibility","hidden");
+		if($(this).find(".remove-button").css("display") == "block")
+			$(this).find(".remove-button").css("display","none");
 		
 	}else
 	{
 		$(this).css( "grid-column-end", "span 2" );
-		$(this).find(".extra-info").css("visibility","visible");
-		$(this).find(".remove-button").css("visibility","visible");
+		$(this).find(".extra-info").css("display","block");
+		$(this).find(".remove-button").css("display","block");
 	}
 });
 
@@ -380,10 +387,8 @@ function logout()
 		login_button.appendChild(login_text);   
 		
 		/* Logout text */
-		var logout_text = document.createElement("center");
-		logout_text.style.position = 'absolute';
-		logout_text.style.top= '50%';
-		logout_text.style.left= '40%';
+		var logout_text = document.createElement("div");
+		logout_text.setAttribute('class', 'logout');
 		logout_text.innerHTML = "You have been successfully logged out"
 		
 		/* Make a new line */
@@ -407,7 +412,7 @@ function logout()
 function show_form()
 {
 	var form = document.getElementById("form");
-	form.setAttribute('class', 'sidebar-form visible');
+	form.setAttribute('class', 'sidebar-form block');
 }
 
 
