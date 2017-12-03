@@ -3,6 +3,20 @@
     border-color: #ccc !important;
 }
 
+.popup {
+    position: fixed;
+    display: none;
+    bottom: 1rem;
+    left: 2rem;
+    z-index: 100;
+    background: #222;
+    font-weight: bold;
+    color: #fff;
+    min-width: 200px;
+    height: auto;
+    padding: 2rem 4rem;
+}
+
 
 .site-main {
     .current-list {

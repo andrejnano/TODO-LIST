@@ -141,7 +141,7 @@ function itemToArchive()
 	console.log(data);
 	
 	$('.popup span').text('Task send to archive');
-	$('.popup span').show().delay(2000).fadeOut();
+	$('.popup').show().delay(2000).fadeOut();
 	
 	parent.removeChild(item);
 }
@@ -175,7 +175,7 @@ function itemDelete()
 	console.log(data);
 	
 	$('.popup span').text('Task deleted');
-	$('.popup span').show().delay(2000).fadeOut();
+	$('.popup').show().delay(2000).fadeOut();
 	
 	parent.removeChild(item);
 }
@@ -208,7 +208,7 @@ function fromArchiveToTODO()
 	console.log(data);
 	
 	$('.popup span').text('Task send to TODO list');
-	$('.popup span').show().delay(2000).fadeOut();
+	$('.popup').show().delay(2000).fadeOut();
 	
 	parent.removeChild(item);
 	
@@ -316,7 +316,7 @@ function add_new_task()
 		console.log(data);
 		
 		$('.popup span').text('New task added');
-		$('.popup span').show().delay(2000).fadeOut();
+		$('.popup').show().delay(2000).fadeOut();
 		
 		subject_object=null;
 		subject_name=null;
@@ -328,7 +328,7 @@ function add_new_task()
 	else
 	{
 		$('.popup span').text('Something is missing.');
-		$('.popup span').show().delay(2000).fadeOut();
+		$('.popup').show().delay(2000).fadeOut();
 	}
 }
 
