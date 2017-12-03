@@ -457,5 +457,11 @@ $('#todo-list').click(function() {
 
     $('#subject_list li').remove();
 	renderTodoList();
+
+	$(".category").each(function () {
+		$(this).removeClass("selected");
+	});
+
+	$("#all").addClass("selected");
 	
 });
