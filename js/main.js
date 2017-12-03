@@ -348,7 +348,11 @@ $('#subjects_filtering .category').on('click', function() {
 
 /* Function for displaying archive.*/
 $('#archive').click(function() {
-  
+	
+	hide_form();
+	$(".site-menu").hide();
+	$(".site-main").css("grid-column", "span 6");
+
 	$('#subject_list li').remove();
   
 	renderArchiveList();
@@ -442,6 +446,8 @@ function hide_form() {
 $('#todo-list').click(function() {
 	
 	hide_form();
+	$(".site-menu").show();
+	$(".site-main").css("grid-column", "span 4");
 
     $('#subject_list li').remove();
 	renderTodoList();
