@@ -177,6 +177,8 @@ function fromArchiveToTODO()
 	var item = this.parentNode;
 	var parent = item.parentNode;	
 	
+	item.setAttribute('class','list-item');
+
 	var name = item.children[0].textContent;
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
