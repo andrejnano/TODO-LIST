@@ -286,3 +286,12 @@ function logout()
 	/* Add all to html body*/
 	document.body.appendChild(logout_text);
 } 
+
+
+function show_form()
+{
+	var form = document.getElementById("form");
+	form.setAttribute('class', 'sidebar-form visible');
+}
+
+
