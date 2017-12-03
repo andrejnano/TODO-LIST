@@ -29,32 +29,25 @@
 @include for-phone-only {
     
     .site {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .site-header {
         height: 70px;
-        grid-column: 1;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
     }
 
     .site-menu {
-        height: 70px;
-        grid-column: 1;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        height: auto;
     }
 
     .site-main {
-        grid-column: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        min-height: 90vh;
+        width: 100%;
     }
 
     .sidebar-form {
@@ -68,40 +61,45 @@
         right: 1rem;
     }
 
+    .close-form-button {
+        display: inline-block;
+        position: fixed;
+        z-index: 20;
+        top: 140px;
+        right: 1rem;
+    }
+
 }
 
 /******************************************************************************
     max 1199x
 ******************************************************************************/
 
-@include for-tablet-portrait-up {
+@media (min-width: 600px) and (max-width: 1199px){
 
     .site {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: auto;
+        display: flex;
+        flex-direction: column;
     }
     
     .site-header {
         height: 70px;
-        grid-column: 1 / -1;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
     }
 
     .site-menu {
-        height: 70px;
-        grid-column: 1 / -1;
+        height: auto;
     }
     
     .site-main {
-        grid-column: 1 / -1;
+        min-height: 90vh;
+        width: 100%;
     }
 
     .sidebar-form {
         display: none;
-        grid-column: 1 / -1;
     }
 
     .floating-add-button {
@@ -109,6 +107,14 @@
         position: fixed;
         bottom: 2rem;
         right: 2rem;
+    }
+
+    .close-form-button {
+        display: inline-block;
+        position: fixed;
+        z-index: 20;
+        top: 140px;
+        right: 1rem;
     }
 
 }
@@ -167,6 +173,10 @@
     }
 
     .floating-add-button {
+        display: none;
+    }
+
+    .close-form-button {
         display: none;
     }
 }

@@ -1,7 +1,14 @@
+
 @include for-phone-only {
     
     .site-header {
+        position: fixed;
+        width: 100%;
+        z-index: 20;
+        top: 0;
+        left: 0;
         align-items: center;
+        justify-content: space-between;
         .app-name {
             margin: 0 0.8rem 0 0.6rem;
             text-align: center;
@@ -35,9 +42,14 @@
 }
 
 
-@include for-tablet-portrait-up {
+@media (min-width: 600px) and (max-width: 1199px) {
     
     .site-header {
+        position: fixed;
+        width: 100%;
+        z-index: 20;
+        top: 0;
+        left: 0;
         align-items: center;
         justify-content: space-between;
         .app-name {

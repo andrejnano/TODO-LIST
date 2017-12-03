@@ -374,7 +374,8 @@ $('#subject_list').on('click', '.list-item', function() {
 		if($(this).find(".remove-button").css("display") == "block")
 			$(this).find(".remove-button").css("display","none");
 		
-	}else
+	}
+	else
 	{
 		$(this).css( "grid-column-end", "span 2" );
 		$(this).find(".extra-info").css("display","block");
@@ -430,12 +431,19 @@ function logout()
 function show_form()
 {
 	var form = document.getElementById("form");
-	form.setAttribute('class', 'sidebar-form block');
+	form.setAttribute('class', 'sidebar-form visible');
+}
+
+function hide_form() {
+	var form = document.getElementById("form");
+	form.setAttribute('class', 'sidebar-form');
 }
 
 
 $('#todo-list').click(function() {
 	
+	hide_form();
+
     $('#subject_list li').remove();
 	renderTodoList();
 	

@@ -30,7 +30,7 @@
                 font-weight: bold;
                 font-size: 1.2rem;
             }
-            
+
             .item-button {
                 padding: 0.5rem;
                 background: $divider-color;
@@ -92,6 +92,42 @@
 
             .list-item {
                 margin: 1.6rem 1.2rem;
+                padding: 1rem;
+                display: block;
+                min-width: 260px;
+                height: auto;
+                overflow: auto;
+                transition: 0.3s all linear;
+
+                .item-button {
+                    float: right;
+                }
+            }
+        }
+        .current-list:after {
+            content: '';
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}
+
+
+@media (min-width: 600px) and (max-width: 1199px) {
+
+    .site-main {
+        margin: 0;
+        min-height: 90vh;
+        .current-list {
+            transition: 0.3s all linear;
+            margin: 0;
+            padding: 0;
+            display: block;
+            min-width: 320px;
+            text-align: center;
+
+            .list-item {
+                margin: 2.4rem;
                 padding: 1rem;
                 display: block;
                 min-width: 260px;
