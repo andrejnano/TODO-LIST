@@ -122,11 +122,11 @@ function itemToArchive()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -153,11 +153,11 @@ function itemFromArchiveDelete()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -183,11 +183,11 @@ function fromArchiveToTODO()
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
 	
-	if( $(item.children[2]).css("visibility") == "hidden")
+	if( $(item.children[2]).css("display") == "none")
 	{
-		$(item).find(".extra-info").css("visibility","visible");
+		$(item).find(".extra-info").css("display","block");
 		var info=item.children[2].textContent;
-		$(item).find(".extra-info").css("visibility","hidden");
+		$(item).find(".extra-info").css("display","none");
 	}
 	else
 	{
@@ -230,7 +230,7 @@ function addItemHTML(name, color, activity, info, archived)
 	/* Set subject extra info text */
 	var div2 = document.createElement("div");
 	div2.setAttribute('class','extra-info');
-	div2.style.visibility = "hidden";
+	div2.style.display = "none";
 	div2.appendChild(document.createTextNode(info));
 	li.appendChild(div2);
 	
@@ -266,7 +266,7 @@ function addItemHTML(name, color, activity, info, archived)
 		li.appendChild(remove_btn);
 		
 		remove_btn.addEventListener('click', itemFromArchiveDelete);
-		remove_btn.style.visibility = "hidden";
+		remove_btn.style.display = "none";
 	}
 	
 	
@@ -345,16 +345,16 @@ $('#subject_list').on('click', '.list-item', function() {
 	if( $(this).css("grid-column-end") == "span 2")
 	{
 		$(this).css( "grid-column-end", "span 1" );
-		$(this).find(".extra-info").css("visibility","hidden");
+		$(this).find(".extra-info").css("display","none");
 		
-		if($(this).find(".remove-button").css("visibility") == "visible")
-			$(this).find(".remove-button").css("visibility","hidden");
+		if($(this).find(".remove-button").css("display") == "block")
+			$(this).find(".remove-button").css("display","none");
 		
 	}else
 	{
 		$(this).css( "grid-column-end", "span 2" );
-		$(this).find(".extra-info").css("visibility","visible");
-		$(this).find(".remove-button").css("visibility","visible");
+		$(this).find(".extra-info").css("display","block");
+		$(this).find(".remove-button").css("display","block");
 	}
 });
 
@@ -406,7 +406,7 @@ function logout()
 function show_form()
 {
 	var form = document.getElementById("form");
-	form.setAttribute('class', 'sidebar-form visible');
+	form.setAttribute('class', 'sidebar-form block');
 }
 
 
