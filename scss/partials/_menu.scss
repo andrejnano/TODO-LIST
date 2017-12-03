@@ -1,3 +1,9 @@
+
+
+.selected {
+    border: 2px solid #fff;
+}
+
 .site-menu {
     
     .menu {
@@ -25,6 +31,8 @@
 
 @include for-phone-only {
     
+
+
     .site-menu {
         .menu {
             margin: 80px 0 0;
@@ -70,5 +78,11 @@
                 border-radius: 0;
             }
         }
+    }
+}
+
+@include for-desktop-up {
+    .selected {
+        transform: translateX(1rem);
     }
 }
