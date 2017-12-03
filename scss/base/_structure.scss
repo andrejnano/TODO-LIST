@@ -61,6 +61,13 @@
         display: none;
     }
 
+    .floating-add-button {
+        display: inline-block;
+        position: fixed;
+        bottom: 1.6rem;
+        right: 1rem;
+    }
+
 }
 
 /******************************************************************************
@@ -95,6 +102,13 @@
     .sidebar-form {
         display: none;
         grid-column: 1 / -1;
+    }
+
+    .floating-add-button {
+        display: inline-block;
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
     }
 
 }
@@ -150,5 +164,9 @@
         width: auto;
         height: 100vh;
         overflow:hidden;
+    }
+
+    .floating-add-button {
+        display: none;
     }
 }

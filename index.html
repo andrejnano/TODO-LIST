@@ -25,12 +25,17 @@
 
                 <br/>
 
-                <a href='#'>Profile</a> | <a href='#'>Logout </a>
+                <a href="#">Profile</a> | <a href="javascript:logout();">Logout </a>
             </div>
 
 
             <!-- links container --> 
             <div class='link-area'>
+
+                <!-- task list -->
+                <a href='#' class='action-link' id='todo-list'>
+                    <i class='fa fa-fw fa-tasks'></i>
+                </a>
 
                 <!-- archive -->
                 <a href='#' class='action-link' id='archive'>
@@ -165,8 +170,12 @@
         </main> <!-- end of .site-main -->
 
 
+        <button class='floating-add-button' onclick="show_form()">
+            <i class='fa fa-fw fa-plus'></i>
+        </button>
+
         <!-- INPUT FORM CONTAINER -->
-        <aside class='sidebar-form'>
+        <aside class='sidebar-form' id='form'>
 
             <!-- temporary input form -->
             <form class='input-form'>
@@ -214,7 +223,7 @@
                         <textarea id="further_info" onchange="set_further_info();"></textarea> <!-- big input box -->
 
                         <button type='button' class="submit" onclick="add_new_task();"> <!-- SUBMIT BUTTON -->
-                            Add new task
+                            <i class='fa fa-fw fa-plus'></i>
                         </button>
                     </li>
 

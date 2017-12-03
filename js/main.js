@@ -330,6 +330,7 @@ $('#archive').click(function() {
 	renderArchiveList();
 });
 
+
 function display_all_todo_tasks()
 {
 	$('#subject_list li').remove();
@@ -355,3 +356,50 @@ $('#subject_list').on('click', '.list-item', function() {
 		$(this).find(".remove-button").css("visibility","visible");
 	}
 });
+
+function logout()
+{
+	/* 'Removes' all element from the page */
+	var site_body = document.getElementById('site');
+	while (site_body.firstChild)
+	{
+		site_body.removeChild(site_body.firstChild);
+	}
+	
+	/* Set temporarily new background colour */
+	document.body.style.background = "transparent";
+	document.body.style.backgroundColor = '#3a7bd5';
+	
+	/* The login button */
+	var login_button = document.createElement("button");
+	var login_text = document.createTextNode("Login");
+	login_button.onclick = function() { window.location.reload(); }
+	login_button.appendChild(login_text);   
+	
+	/* Logout text */
+	var logout_text = document.createElement("center");
+	logout_text.style.position = 'absolute';
+	logout_text.style.top= '50%';
+	logout_text.style.left= '40%';
+	logout_text.innerHTML = "You have been successfully logged out"
+	
+	/* Make a new line */
+	var new_line = document.createElement("br");
+	logout_text.appendChild(new_line);
+	
+	/* Add login button */
+	logout_text.appendChild(login_button);
+	
+	/* Add all to html body*/
+	document.body.appendChild(logout_text);
+} 
+
+
+function show_form()
+{
+	var form = document.getElementById("form");
+	form.setAttribute('class', 'sidebar-form visible');
+}
+
+
+
