@@ -155,7 +155,7 @@ function itemDelete()
 	var name = item.children[0].textContent;
 	var color = rgb2hex($(item).css("border-left-color"));
 	var activity= item.children[1].textContent;
-	
+
 	if( $(item.children[2]).css("display") == "none")
 	{
 		$(item).find(".extra-info").css("display","block");
@@ -168,9 +168,17 @@ function itemDelete()
 	}
 	
 	var temp = {'name': name,'color': color,'activity': activity, 'info': info};
-	data.archived.splice(data.archived.indexOf(JSON.stringify(temp)),1);
-	data.todo.splice(data.todo.indexOf(JSON.stringify(temp)),1);
-
+	if((data.archived.indexOf(JSON.stringify(temp))==-1))
+	{
+		var color=rgb2hex(item.style.borderColor);
+		var temp = {'name': name,'color': color,'activity': activity, 'info': info};
+		if((data.archived.indexOf(JSON.stringify(temp))!=-1))
+			data.archived.splice(data.archived.indexOf(JSON.stringify(temp)),1);	
+	}
+	if((data.todo.indexOf(JSON.stringify(temp))!=-1))
+		data.todo.splice(data.todo.indexOf(JSON.stringify(temp)),1);
+	
+		
 	dataObjectUptated();
 	console.log(data);
 	
