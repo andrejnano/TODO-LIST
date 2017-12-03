@@ -9,6 +9,7 @@
         list-style-type: none;
 
         .list-item {
+            position: relative;
             background: $primary-color-text;
             color: $primary-text-color;
             text-align: left;
@@ -48,6 +49,16 @@
                     transition: 0.2s ease-in all;
                     transform: scale(1.05);
                 }
+            }
+
+            .remove-button {
+                position: absolute;
+                top: 1rem;
+                right: 0.5rem;
+                appearance: none;
+                background: transparent;
+                color: #333;
+                font-weight: bold;
             }
         }
     }
