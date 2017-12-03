@@ -268,14 +268,7 @@ function addItemHTML(name, color, activity, info, archived)
 		
 
 	remove_btn.addEventListener('click', itemDelete);
-	remove_btn.style.visibility = "hidden";
-
-
-	remove_btn.addEventListener('click', itemFromArchiveDelete);
 	remove_btn.style.display = "none";
-	}
-	
-	
 
 	button.appendChild(i);	
 	
