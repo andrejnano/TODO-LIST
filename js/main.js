@@ -414,4 +414,9 @@ function show_form()
 }
 
 
-
+$('#todo-list').click(function() {
+	
+    $('#subject_list li').remove();
+	renderTodoList();
+	
+});
